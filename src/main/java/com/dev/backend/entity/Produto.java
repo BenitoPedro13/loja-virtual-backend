@@ -19,7 +19,6 @@ public class Produto {
     private String descricaoLonga;
     private Double valorCusto;
     private Double valorVenda;
-    private String cep;
 
     @ManyToOne
     @JoinColumn(name = "idMarca")
