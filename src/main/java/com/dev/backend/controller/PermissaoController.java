@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/permissao")
-public class PermissaoController { 
+public class PermissaoController {
 
     @Autowired
     private PermissaoService permissaoService;
