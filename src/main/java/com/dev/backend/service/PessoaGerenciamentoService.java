@@ -28,6 +28,27 @@ public class PessoaGerenciamentoService {
         return "Codigo Enviado!";
     }
 
+    public String alterarSenha(Pessoa pessoa) {
+        Pessoa pessoaBanco = pessoaRepository.findByEmailAndCodigoRecuperacaoSenha(pessoa.getEmail(), pessoa.getCodigoRecuperacaoSenha());
+
+        if (pessoaBanco == null) {
+            return "Email ou codigo nao encontrado!";
+        }
+
+        Date diferenca = new Date(new Date().getTime() - pessoaBanco.getDataEnvioCodigo().getTime());
+
+        if (diferenca.getTime() / 1000 < 900) {
+            //TODO: depois que adicionar o spring security e necessario criptografar a senha!!
+            pessoaBanco.setSenha(pessoa.getSenha());
+            pessoaBanco.setCodigoRecuperacaoSenha(null);
+            pessoaBanco.setDataEnvioCodigo(null);
+            pessoaRepository.saveAndFlush(pessoaBanco);
+            return "Senha alterada com sucesso!";
+        } else {
+            return "Tempo expirado, solicite um novo codigo";
+        }
+    }
+
     private String getCodigoRecuperacaoSenha(Long id) {
         DateFormat format = new SimpleDateFormat("ddMMyyyyHHmmssmm");
         return format.format(new Date()) + id;
