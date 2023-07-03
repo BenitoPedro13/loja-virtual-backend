@@ -35,4 +35,11 @@ public class PermissaoController {
         permissaoService.excluir(id);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/batch")
+    @CrossOrigin("http://localhost:3000")
+    public ResponseEntity<Void> excluirVarios(@RequestBody List<Long> ids) {
+        permissaoService.excluirVarios(ids);
+        return ResponseEntity.ok().build();
+    }
 }
