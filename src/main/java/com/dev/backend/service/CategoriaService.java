@@ -39,4 +39,8 @@ public class CategoriaService {
         categoriaRepository.delete(categoria);
     }
 
+    public void excluirVarios(List<Long> ids){
+        ids.forEach(this::excluir);
+    }
+
 }
