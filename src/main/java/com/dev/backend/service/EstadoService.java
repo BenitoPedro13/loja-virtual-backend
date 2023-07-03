@@ -39,4 +39,8 @@ public class EstadoService {
         estadoRepository.delete(estado);
     }
 
+    public void excluirVarios(List<Long> ids){
+        ids.forEach(this::excluir);
+    }
+
 }
