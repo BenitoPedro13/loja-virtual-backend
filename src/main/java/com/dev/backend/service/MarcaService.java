@@ -39,4 +39,8 @@ public class MarcaService {
         marcaRepository.delete(marca);
     }
 
+    public void excluirVarios(List<Long> ids){
+        ids.forEach(this::excluir);
+    }
+
 }
