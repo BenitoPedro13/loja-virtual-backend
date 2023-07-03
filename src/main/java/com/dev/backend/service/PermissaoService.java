@@ -39,4 +39,7 @@ public class PermissaoService {
         permissaoRepository.delete(permissao);
     }
 
+    public void excluirVarios(List<Long> ids){
+        ids.forEach(this::excluir);
+    }
 }
