@@ -39,4 +39,8 @@ public class CidadeService {
         cidadeRepository.delete(cidade);
     }
 
+    public void excluirVarios(List<Long> ids){
+        ids.forEach(this::excluir);
+    }
+
 }
